@@ -34,6 +34,8 @@ const UsuarioSchema = Schema({
 
 UsuarioSchema.methods.toJSON = function() {
     const { __v, contrasena, ...Usuario } = this.toObject();
+    Usuario.uid = Usuario._id;
+    delete Usuario._id;
     return Usuario;
 }
 
